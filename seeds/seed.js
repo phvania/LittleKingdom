@@ -1,50 +1,28 @@
 const sequelize = require('../config/connection');
-const { Users, Daycares,Bookings, Kids } = require('../models');
-const {Daycares} = require('../models')
-const {Bookings} = require('../models')
-const {Kids} = require('../models')
+const seedUsersData = require('./users-seeds');
+const seedKidsData = require('./kids-seeds');
+const seedBookingsData = require('./bookings-seeds');
+const seedDaycaresData = require('./daycares-seeds');
+const {Users, Kids, Bookings, Daycares} = require('../models');
 
-const UsersData = require('./userData.json');
-const DaycaresData = require('./daycareData.json');
-const BookingsData = require('./bookingData.json');
-const kidsData = require('./kidsData.json');
+const seedAll = async () => {
 
-const seedDatabase = async () => {
+  console.log('\n----- DATABASE SYNCED -----\n');
   await sequelize.sync({ force: true });
+  
+  const users = await Users.bulkCreate(seedUsersData);
+  console.log('\n----- USERS SEEDED -----\n');
+  
+  const kids = await Kids.bulkCreate(seedKidsData);
+  console.log('\n----- KIDS SEEDED -----\n');
+
+  const bookings = await Bookings.bulkCreate(seedBookingsData);
+  console.log('\n----- BOOKINGS SEEDED -----\n');
+
+  const daycares = await Daycares.bulkCreate(seedDaycaresData);
+  console.log('\n----- DAYCARES TAGS SEEDED -----\n');
+
 }
-await Users.bulkCreate(UsersData, {
-   individualHooks: true,
-    returning: true,
-  });
-    for (const Users of UsersData) {
-      await Users.create({
-        ...Users,
-        user_id: Users[Math.floor(Math.random() * Users.length)].id,
-      });
-   }
+process.exit(0);
 
-   for (const Kids of kidsData) {
-    await Kids.create({
-      ...Kids,
-      user_id: Users[Math.floor(Math.random() * Users.length)].id,
-    });
-  }
-  for (const Bookings of BookingsData) {
-    await Bookings.create({
-      ...Bookings,
-      user_id: Users[Math.floor(Math.random() * Users.length)].id,
-    });
-  }
-    for (const Daycares of DaycaresData) {
-      await Daycares.create({
-        ...Daycares,
-        //user_id: Users[Math.floor(Math.random() * Users.length)].id,
-      });
-  
-  }
-
-  process.exit(0);
-
- 
-  
-seedDatabase();
+seedAll();

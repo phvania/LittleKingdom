@@ -1,0 +1,32 @@
+[
+    {
+        "bookings_time": "900",
+        "bookings_type": "FS",
+        "user_id": "1",
+        "kid_id": "1"
+    },
+    {
+        "bookings_time": "900",
+        "bookings_type": "FS",
+        "user_id": "2",
+        "kid_id": "3"
+    },
+    {
+        "bookings_time": "900",
+        "bookings_type": "FS",
+        "user_id": "1",
+        "kid_id": "2"
+    },
+    {
+        "bookings_time": "1200",
+        "bookings_type": "PS",
+        "user_id": "3",
+        "kid_id": "4"
+    },
+    {
+        "bookings_time": "900",
+        "bookings_type": "PS",
+        "user_id": "4",
+        "kid_id": "5"
+    }
+]

@@ -1,0 +1,25 @@
+
+
+ [
+{
+    "Kid_firstName": "noah",
+    "Kid_lastname": "deo",
+    "Kid_age": 2,
+    "Kid_allergies": "egg",
+    "user_id": 1    
+},
+{
+    "Kid_firstName": "nolen",
+    "Kid_lastname": "doe",
+    "Kid_age": 1,
+    "kid_allergies": "peanut",
+    "user_id": 2    
+},  
+{
+    "kid_firstName": "niko",
+    "Kid_lastname": "doe",
+    "Kid_age": 3,
+    "Kid_allergies": "fish",
+    "user_id": 3  
+}
+]

@@ -6,8 +6,8 @@ class Users extends Model {
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
-}
 
+}
 Users.init(
   {
     id: {
@@ -50,5 +50,4 @@ Users.init(
     modelName: 'users',
   }
 );
-
 module.exports = Users;

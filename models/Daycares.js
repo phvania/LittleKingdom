@@ -10,26 +10,24 @@ Daycares.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    daycare_name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    description: {
-      type: DataTypes.STRING,
+    daycare_description: {
+      type: DataTypes.TEXT,
     },
-    address: {
+    daycare_address: {
       type: DataTypes.STRING,
       allowNull: false,
-      
     },
-    phone_number: {
-      type: DataTypes.INTEGER,
+    daycare_phone: {
+      type: DataTypes.BIGINT,
       allowNull: false,
     },
-    contact_name: {
+    daycare_contact_name: {
       type: DataTypes.STRING,
-      unique: true
-          
+      unique: false,
     },
   },
   {

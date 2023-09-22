@@ -11,28 +11,35 @@ Bookings.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    Bookings_time: {
-      type: DataTypes.INTEGER,
-      unique: true,
+    bookings_time: {
+      type: DataTypes.TIME,
+      unique: false,
     },
-    Bookings_date: {
-      type: DataTypes.INTEGER,
+    bookings_date: {
+      type: DataTypes.DATE,
+      defaultValue: DataTypes.NOW,
       allowNull: false
     },
-    Bookings_type: {
+    bookings_type: {
       type: DataTypes.STRING,
+      // defaultValue: 'FT',
       allowNull: false,
-
-      
     },
     user_id: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
+      references: {
+        model: 'users',
+        key: 'id'
+      }
     },
     kid_id: {
-      type: DataTypes.STRING,
-      unique: true
-          
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'kids',
+        key: 'id'
+      }
     },
   },
   {
@@ -40,7 +47,7 @@ Bookings.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Bookings',
+    modelName: 'bookings',
   }
 );
 

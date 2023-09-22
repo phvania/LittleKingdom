@@ -1,0 +1,26 @@
+    [
+        {
+            "user_firstname": "Jonny",
+            "user_lastname": "Pantaloon",
+            "email": "johnnyp@pants.com",
+            "password": "johnnyboy"
+        },
+        {
+            "user_firstname": "Tensa",
+            "user_lastname": "Mominsky",
+            "email": "tenmom@stressed.com",
+            "password": "tensamom"
+        },
+        {
+            "user_firstname": "Frooti",
+            "user_lastname": "Nanoonman",
+            "email": "veganmom@plants.com",
+            "password": "nanmoom"
+        },
+        {
+            "user_firstname": "Sha",
+            "user_lastname": "Eeney",
+            "email": "gold@bright.com",
+            "password": "metalbidness"
+        }
+    ]

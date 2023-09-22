@@ -1,8 +1,8 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Kids extends Model {}
-  
+class Kids extends Model { }
+
 Kids.init(
   {
     id: {
@@ -11,40 +11,32 @@ Kids.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    kid_firstname: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    age: {
+    kid_lastname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    kid_age: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      unique: true,
-        
     },
-    allergies: {
+    kid_allergies: {
       type: DataTypes.STRING,
-         
-      },
-      user_id: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'kids',
-            key: 'id'
-        }
+      allowNull: true,
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'users',
+        key: 'id'
       }
-    },
-  
+    }
+  },
+
   {
-    hooks: {
-      beforeCreate: async (newUserData) => {
-        newUserData.password = await bcrypt.hash(newUserData.password, 10);
-        return newUserData;
-      },
-      beforeUpdate: async (updatedUserData) => {
-        updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
-        return updatedUserData;
-      },
-    },
     sequelize,
     timestamps: false,
     freezeTableName: true,

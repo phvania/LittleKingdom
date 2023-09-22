@@ -11,10 +11,15 @@ Kids.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
+    firstname: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    lastname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+
     age: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -25,7 +30,7 @@ Kids.init(
       type: DataTypes.STRING,
          
       },
-      user_id: {
+    user_id: {
         type: DataTypes.INTEGER,
         references: {
             model: 'kids',

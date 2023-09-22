@@ -3,6 +3,6 @@ const users = require('./users');
 const daycares = require('./daycares');
 
 router.use('/users', users);
-router.use('/daycares', dayCares);
+router.use('/daycares', daycares);
 
 module.exports = router;

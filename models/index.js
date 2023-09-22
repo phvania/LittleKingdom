@@ -5,7 +5,7 @@ const Bookings = require('./Bookings');
 
 Users.hasMany(Kids, {
     foreignKey: 'user_id',
-    onDelete: 'CASCADE'
+    onDelete: 'SET DEFAULT'
   });
   
   Kids.belongsTo(Users, {

@@ -6,8 +6,8 @@ class Users extends Model {
   checkPassword(loginPw) {
     return bcrypt.compareSync(loginPw, this.password);
   }
-}
 
+}
 Users.init(
   {
     id: {
@@ -23,6 +23,11 @@ Users.init(
     user_lastname: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    user_lastname: {
+      type: DataTypes.STRING,
+      allowNull: false,
+
     },
     email: {
       type: DataTypes.STRING,
@@ -54,5 +59,4 @@ Users.init(
     modelName: 'users',
   }
 );
-
 module.exports = Users;

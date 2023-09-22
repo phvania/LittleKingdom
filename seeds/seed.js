@@ -22,7 +22,7 @@ const seedAll = async () => {
   const daycares = await Daycares.bulkCreate(seedDaycaresData);
   console.log('\n----- DAYCARES TAGS SEEDED -----\n');
 
-  process.exit(0);
-};
+}
+process.exit(0);
 
 seedAll();

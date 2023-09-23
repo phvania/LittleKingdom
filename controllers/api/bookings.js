@@ -47,6 +47,22 @@ router.post('/', async (req, res) => {
     res.status(400).json(err);
   }
 });
+// update a booking's info by its `id` value
+router.put('/:id', async (req, res) => {
+  // update booking data
+  try{
+  const putBooking = await Bookings.update(req.body, { where: { id: req.params.id } });
+  // console.log(putDaycare);
+  if (!putBooking) {
+    res.status(404).json({ message: 'No daycare found with this id!' });
+    return;
+  }
+  res.status(200).json(putBooking);
+  } catch (err) {
+  // console.log(err);
+  res.status(400).json(err);
+  }
+});
 // delete a new booking by its id
 router.delete('/:id', async (req, res) => {
   try {

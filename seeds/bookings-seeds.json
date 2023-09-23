@@ -1,32 +1,42 @@
 [
     {
-        "bookings_time": "900",
+        "bookings_time": "0.375",
+        "bookings_date": "01/10/2023",
         "bookings_type": "FS",
-        "user_id": "1",
-        "kid_id": "1"
+        "user_id": 1,
+        "kid_id": 1,
+        "daycare_id": 3
     },
     {
-        "bookings_time": "900",
+        "bookings_time": "0.375",
+        "bookings_date": "01/10/2023",
         "bookings_type": "FS",
-        "user_id": "2",
-        "kid_id": "3"
+        "user_id": 2,
+        "kid_id": 3,
+        "daycare_id": 3
     },
     {
-        "bookings_time": "900",
+        "bookings_time": "0.375",
+        "bookings_date": "01/10/2023",
         "bookings_type": "FS",
-        "user_id": "1",
-        "kid_id": "2"
+        "user_id": 1,
+        "kid_id": 2,
+        "daycare_id": 3
     },
     {
-        "bookings_time": "1200",
+        "bookings_time": "0.5",
+        "bookings_date": "01/10/2023",
         "bookings_type": "PS",
-        "user_id": "3",
-        "kid_id": "4"
+        "user_id": 3,
+        "kid_id": 4,
+        "daycare_id": 2
     },
     {
-        "bookings_time": "900",
+        "bookings_time": "0.375",
+        "bookings_date": "01/10/2023",
         "bookings_type": "PS",
-        "user_id": "4",
-        "kid_id": "5"
+        "user_id": 4,
+        "kid_id": 5,
+        "daycare_id": 1
     }
 ]

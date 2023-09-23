@@ -16,11 +16,11 @@ const seedAll = async () => {
   const kids = await Kids.bulkCreate(seedKidsData);
   console.log('\n----- KIDS SEEDED -----\n');
 
-  const bookings = await Bookings.bulkCreate(seedBookingsData);
-  console.log('\n----- BOOKINGS SEEDED -----\n');
-
   const daycares = await Daycares.bulkCreate(seedDaycaresData);
   console.log('\n----- DAYCARES TAGS SEEDED -----\n');
+
+  const bookings = await Bookings.bulkCreate(seedBookingsData);
+  console.log('\n----- BOOKINGS SEEDED -----\n');
 
   process.exit(0);
 }

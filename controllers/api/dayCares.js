@@ -45,14 +45,14 @@ router.post('/', async (req, res) => {
       res.status(400).json(err);
     });
 });
-// update a daycare's name by its `id` value
+// update a daycare's info by its `id` value
 router.put('/:id', async (req, res) => {
   // update daycare data
   try{
   const putDaycare = await Daycares.update(req.body, { where: { id: req.params.id } });
   // console.log(putDaycare);
   if (!putDaycare) {
-    res.status(404).json({ message: 'No category found with this id!' });
+    res.status(404).json({ message: 'No daycare found with this id!' });
     return;
   }
   res.status(200).json(putDaycare);

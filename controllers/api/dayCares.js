@@ -26,15 +26,15 @@ router.get('/:id', async (req, res) => {
 // create new daycare
 router.post('/', async (req, res) => {
 
-/* req.body should look like this...
-  {
-	"daycare_name": "Daycare name",
-	"daycare_description": "Daycare description text",
-	"daycare_address": "Daycare address as text",
-	"daycare_phone": 3136843434,
-	"daycare_contact_name": "Contact name"
-}
-*/
+  /* req.body should look like this...
+    {
+    "daycare_name": "Daycare name",
+    "daycare_description": "Daycare description text",
+    "daycare_address": "Daycare address as text",
+    "daycare_phone": 3136843434,
+    "daycare_contact_name": "Contact name"
+  }
+  */
   Daycares.create(req.body)
     .then((newDaycare) => {
       // return the category
@@ -45,19 +45,23 @@ router.post('/', async (req, res) => {
       res.status(400).json(err);
     });
 });
-// update a category's name by its `id` value
-router.put('/:id', (req, res) => {
-  // update category data
-  Category.update(req.body, {
-    where: {
-      id: req.params.id,
-    },
-  })    
-    .catch((err) => {
-      // console.log(err);
-      res.status(400).json(err);
-    });
+// update a daycare's name by its `id` value
+router.put('/:id', async (req, res) => {
+  // update daycare data
+  try{
+  const putDaycare = await Daycares.update(req.body, { where: { id: req.params.id } });
+  // console.log(putDaycare);
+  if (!putDaycare) {
+    res.status(404).json({ message: 'No category found with this id!' });
+    return;
+  }
+  res.status(200).json(putDaycare);
+  } catch (err) {
+  // console.log(err);
+  res.status(400).json(err);
+  }
 });
+
 // delete on category by its `id` value
 router.delete('/:id', async (req, res) => {
   try {

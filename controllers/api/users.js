@@ -1,18 +1,27 @@
 const router = require('express').Router();
 const { Users, Bookings, Daycares, Kids} = require('../../models');
 
-// gets all user info from db - including kids and bookings
-router.get('/:id', async (req, res) => {
+// gets all user info from users table 
+router.get('/', async (req, res) => {
   try{
-    const userData = await Users.findByPk(req.params.id, {
-      include: [
-        Bookings
-      ]});
-    res.status(200).json(daycaresData);
+    const userData = await Users.findAll();
+    res.status(200).json(userData);
     } catch (err) {
       res.status(400).json(err);
     }
   
+});
+// gets a user's info from db 
+// - including their kids and bookings
+router.get('/:id', async (req, res) => {
+  try{
+    const userData = await Users.findByPk(req.params.id, {
+      include: [Kids, Bookings]
+      });
+    res.status(200).json(userData);
+    } catch (err) {
+      res.status(400).json(err);
+    }
 });
 // adds a new user to the DB and starts current session
 router.post('/', async (req, res) => {

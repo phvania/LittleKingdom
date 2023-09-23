@@ -40,18 +40,15 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   /* req.body should look like this...
   {
-    kid_firstname: "Basketball",
-    kid_lastname: ""
-    price: 200.00,
-    stock: 3,
-    tagIds: [1, 2, 3, 4]
-  }
+    "kid_firstname":"Don",
+    "kid_lastname":"Donon",
+    "age":2,
+    "allergies":"none",
+    "user_id":1,
+},
 */
   try {
-    const addedKid = await Kids.create({
-      ...req.body,
-      //   user_id: req.session.user_id,
-    });
+    const addedKid = await Kids.create({...req.body});
 
     res.status(200).json(addedKid);
   } catch (err) {

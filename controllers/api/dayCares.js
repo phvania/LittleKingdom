@@ -61,22 +61,16 @@ router.put('/:id', async (req, res) => {
   res.status(400).json(err);
   }
 });
-
-// delete on category by its `id` value
+// delete on daycare by its `id` value
 router.delete('/:id', async (req, res) => {
   try {
-    const categoryData = await Category.destroy({
-      where: {
-        id: req.params.id
-      }
-    });
+    const deleteDaycare = await Daycares.destroy({ where: {id: req.params.id} });
 
-    if (!categoryData) {
-      res.status(404).json({ message: 'No category found with this id!' });
+    if (!deleteDaycare) {
+      res.status(404).json({ message: 'No daycare found with this id!' });
       return;
     }
-
-    res.status(200).json(categoryData);
+    res.status(200).json(deleteDaycare);
   } catch (err) {
     res.status(500).json(err);
   }

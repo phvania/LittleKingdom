@@ -42,8 +42,8 @@ router.post('/', async (req, res) => {
   {
     "kid_firstname":"Don",
     "kid_lastname":"Donon",
-    "age":2,
-    "allergies":"none",
+    "kid_age":2,
+    "kid_allergies":"none",
     "user_id":1,
 },
 */
@@ -56,7 +56,22 @@ router.post('/', async (req, res) => {
   }
   // res.json({"message":"you hit post api/kids/"});
 });
-
+// update a kid's info by its `id` value
+router.put('/:id', async (req, res) => {
+  // update kids data
+  try {
+    console.log(req.body);
+  const putKid = await Kids.update(req.body, { where: { id: req.params.id } });
+  if (!putKid) {
+    res.status(404).json({ message: 'No kid found with this id!' });
+    return;
+  }
+  res.status(200).json(putKid);
+  } catch (err) {
+  // console.log(err);
+  res.status(400).json(err);
+  }
+});
 // delete a specific kid by id
 router.delete('/:id', async (req, res) => {
   try {

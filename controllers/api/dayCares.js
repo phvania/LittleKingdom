@@ -17,29 +17,28 @@ router.get('/:id', async (req, res) => {
   // include its associated booking data
   try {
     // find daycare by id
-    const daycaresData = await Daycares.findByPk(req.params.id, {
-      // include associated bookings
-      include: [{
-          model: Bookings,
-        }],
-    });
+    const daycaresData = await Daycares.findByPk(req.params.id);
     res.status(200).json(daycaresData);
   } catch (err) {
     res.status(500).json(err);
   }
 });
-// create new category
+// create new daycare
 router.post('/', async (req, res) => {
 
 /* req.body should look like this...
   {
-    category_name: 'Shirts',
-  }
+	"daycare_name": "Daycare name",
+	"daycare_description": "Daycare description text",
+	"daycare_address": "Daycare address as text",
+	"daycare_phone": 3136843434,
+	"daycare_contact_name": "Contact name"
+}
 */
-  Category.create(req.body)
-    .then((category) => {
+  Daycares.create(req.body)
+    .then((newDaycare) => {
       // return the category
-      res.status(200).json(category);
+      res.status(200).json(newDaycare);
     })
     .catch((err) => {
       console.log(err);

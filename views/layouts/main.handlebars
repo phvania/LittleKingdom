@@ -5,44 +5,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Little Kingdom!</title>
-    <link rel="stylesheet" href="/css/jass.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/public/css/jass.css">
+    <link rel="stylesheet" href="/public/css/style.css">
 </head>
 
 <body>
     <div class="title">
-        <h1>Little Kingdom</h1>
+        <header>
+            <h1>Little Kingdom</h1>
+            <img src="/images/logo.png" alt="logoimage">
 
-        <nav>
-            <!-- Conditionally render login or logout links -->
-            {{#if logged_in}}
-            <a href="/profile">profile</a> |
-            <button class="no-button" id="logout">logout</button>
-            {{else}}
-            <a href="/login">login</a>
-            {{/if}}
-        </nav>
+            <nav>
+                <!-- Conditionally render login or logout links -->
+                {{#if logged_in}}
+                <a href="../profile.handlebars">profile</a> |
+                <button class="no-button" id="logout">logout</button>
+
+                <img src="/images/main image.jpg" alt="headerimage">
+
+                <nav>
+                    <div class="topnav">
+                        <a href="#aboutus">About Us</a>
+                        <a href="../event.handlebars">Events</a>
+                        <a href="../schedule.handlebars">Schedule</a>
+                        <a href="../bookings.handlebars">Book now</a>
+                        <a href="../contact.handlebars">Contact Us</a>
+
+                    </div>
+                </nav>
+
+                {{else}}
+                <a href="../login.handlebars">login</a>
+
+                <img src="/images/main image.jpg" alt="headerimage">
+
+                <nav>
+                    <div class="topnav">
+                        <a href="#aboutus">About Us</a>
+                        <a href="../event.handlebars">Events</a>
+                        <a href="../contact.handlebars">Contact Us</a>
+
+                    </div>
+                </nav>
+
+                {{/if}}
+
+            </nav>
+        </header>
 
     </div>
 
 
+    <main class="container container-fluid mt-5">
+        <!-- Render the sub layout -->
+        {{{ body }}}
+    </main>
 
-    <nav>
-        <div class="topnav">
-            <a class="active" href="#aboutus">About Us</a>
-            <a href="#events">Events</a>
-            {{#if logged_in}}
-            <a href="#schedule">Schedule</a>
-            <a href="#Booknow">Book now</a>
-            {{/if}}
-            <a href="#contact">Contact Us</a>
+    <footer></footer>
+    </div>
 
-        </div>
-    </nav>
+
 
     <!-- Render script for logged in users only -->
     {{#if logged_in}}
-    <script src="/js/logout.js"></script>
+    <script src="/public/js/logout.js"></script>
     {{/if}}
 
 

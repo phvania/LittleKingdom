@@ -78,12 +78,11 @@ router.delete('/:id', async (req, res) => {
     const deletedKid = await Kids.destroy({
       where: {
         id: req.params.id,
-        // user_id: req.session.user_id,
       },
     });
 
     if (!deletedKid) {
-      res.status(404).json({ message: 'No project found with this id!' });
+      res.status(404).json({ message: 'No kid found with this id!' });
       return;
     }
 

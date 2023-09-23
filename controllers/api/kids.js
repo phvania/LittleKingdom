@@ -6,14 +6,17 @@ router.get('/', async (req, res) => {
     try {
       const kidsData = await Kids.findAll({
         //   sorted by name
-        order: [['name', 'ASC']],
+        // order: [['name', 'ASC']],
       });
   
+      // UNCOMMENT NEXT to send
       // Serialize user data so templates can read it
-      const kids = kidsData.map((kid) => kid.get({ plain: true }));
-  
-      // Pass serialized data into Handlebars.js template
-      res.render('kid', { kids });
+      // const cleanedkids = kidsData.map((kid) => kid.get({ plain: true }));
+      // and then send serialized data into Handlebars.js
+      // res.render('kid', { kids });
+
+      res.status(200).json(kidsData);
+
     } catch (err) {
       res.status(500).json(err);
     }

@@ -19,6 +19,7 @@ const seedAll = async () => {
   const daycares = await Daycares.bulkCreate(seedDaycaresData);
   console.log('\n----- DAYCARES TAGS SEEDED -----\n');
 
+
   const bookings = await Bookings.bulkCreate(seedBookingsData);
   console.log('\n----- BOOKINGS SEEDED -----\n');
 

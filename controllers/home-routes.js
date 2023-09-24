@@ -10,5 +10,9 @@ router.get('/aboutUs', async (req, res) => {
   res.sendFile(path.join(__dirname, '../public/pages/aboutUs.html'));
 });
 
-
+// GET 404 page 
+router.get('*', async (req, res) => {
+  // render not found page
+  res.sendFile(path.join(__dirname, '../public/pages/404.html'));
+});
 module.exports = router;

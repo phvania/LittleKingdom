@@ -23,8 +23,10 @@ const sess = {
 
 app.use(session(sess));
 
+// Setup of our helper functions in utils for handlebars
 const hbs = exphbs.create({ helpers });
 
+// Inform Express.js on which template engine to use
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 

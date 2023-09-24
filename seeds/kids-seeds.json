@@ -2,36 +2,36 @@
     {
         "kid_firstname": "Don",
         "kid_lastname": "Donon",
-        "kid_age": "2",
+        "age": 2,
         "allergies": "none",
-        "user_id": "1"
+        "user_id": 1
     },
     {
         "kid_firstname": "Tim",
         "kid_lastname": "Donon",
-        "kid_age": "1",
+        "age": 1,
         "allergies": "none",
-        "user_id": "1"
+        "user_id": 1
     },
     {
         "kid_firstname": "Jim",
         "kid_lastname": "SimSim",
-        "kid_age": "2",
+        "age": 2,
         "allergies": "peanuts",
-        "user_id": "2"
+        "user_id": 2
     },
     {
         "kid_firstname": "Lim",
         "kid_lastname": "Klimlkim",
-        "kid_age": "1",
+        "age": 1,
         "allergies": "bad manners",
-        "user_id": "3"
+        "user_id": 3
     },
     {
         "kid_firstname": "Shin",
         "kid_lastname": "Kneeknee",
-        "kid_age": "3",
+        "age": 3,
         "allergies": "bad hair",
-        "user_id": "4"
+        "user_id": 4
     }
 ]

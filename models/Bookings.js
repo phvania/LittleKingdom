@@ -41,6 +41,15 @@ Bookings.init(
         key: 'id'
       }
     },
+    daycare_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'daycares',
+        key: 'id'
+      }
+    },
+
   },
   {
     sequelize,

@@ -4,22 +4,28 @@ const Daycares = require('./Daycares');
 const Bookings = require('./Bookings');
 
 Users.hasMany(Kids, {
-    foreignKey: 'user_id',
-    onDelete: 'SET DEFAULT'
-  });
-  
-  Kids.belongsTo(Users, {
-    foreignKey: 'user_id'
-  });
-  
-  Users.hasMany(Bookings, {
-    foreignKey: 'user_id',
-   onDelete: 'CASCADE'
- });
-  
-  Bookings.belongsTo(Users, {
-    foreignKey: 'user_id'
-  });
+  foreignKey: 'user_id',
+  onDelete:'CASCADE'
+});
+Kids.belongsTo(Users);
 
+Users.hasMany(Bookings, {
+  foreignKey: 'user_id',
+  onDelete:'CASCADE'
+});
+Bookings.belongsTo(Users);
 
-module.exports = { Users,Daycares,Bookings,Kids };
+Kids.hasMany(Bookings, {
+  foreignKey: 'kid_id',
+  onDelete: 'CASCADE'
+})
+Bookings.belongsTo(Kids);
+
+Daycares.hasMany(Bookings, {
+  foreignKey: 'daycare_id',
+  onDelete: 'SET DEFAULT'
+});
+
+Bookings.belongsTo(Daycares);
+
+module.exports = { Users, Daycares, Bookings, Kids };

@@ -1,9 +1,32 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { Users, Bookings, Daycares, Kids} = require('../../models');
 
+// gets all user info from users table 
+router.get('/', async (req, res) => {
+  try{
+    const userData = await Users.findAll();
+    res.status(200).json(userData);
+    } catch (err) {
+      res.status(400).json(err);
+    }
+  
+});
+// gets a user's info from db 
+// - including their kids and bookings
+router.get('/:id', async (req, res) => {
+  try{
+    const userData = await Users.findByPk(req.params.id, {
+      include: [Kids, Bookings]
+      });
+    res.status(200).json(userData);
+    } catch (err) {
+      res.status(400).json(err);
+    }
+});
+// adds a new user to the DB and starts current session
 router.post('/', async (req, res) => {
   try {
-    const userData = await User.create(req.body);
+    const userData = await Users.create(req.body);
 
     req.session.save(() => {
       req.session.user_id = userData.id;
@@ -15,10 +38,10 @@ router.post('/', async (req, res) => {
     res.status(400).json(err);
   }
 });
-
+// checks to see if user is registered and starts session if so
 router.post('/login', async (req, res) => {
   try {
-    const userData = await User.findOne({ where: { email: req.body.email } });
+    const userData = await Users.findOne({ where: { email: req.body.email } });
 
     if (!userData) {
       res
@@ -47,7 +70,7 @@ router.post('/login', async (req, res) => {
     res.status(400).json(err);
   }
 });
-
+// logs the user out and destroys the session
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {

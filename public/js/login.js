@@ -22,8 +22,6 @@ const loginFormHandler = async (event) => {
   }
 };
 
-
-//THE BOTTOM IS STILL ON WORK
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
@@ -34,7 +32,7 @@ const signupFormHandler = async (event) => {
   if (name && email && password) {
     const response = await fetch('/api/users', {
       method: 'POST',
-      body: JSON.stringify({ user_firstname, user_lastname, email, password }),
+      body: JSON.stringify({ name, email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
 

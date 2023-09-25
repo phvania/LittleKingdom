@@ -35,6 +35,8 @@ router.get('*', async (req, res) => {
 // GET User info
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
+  console.log("ROUTE: /login");
+
   if (req.session.logged_in) {
     res.redirect('/profile');
     return;
@@ -45,6 +47,9 @@ router.get('/login', (req, res) => {
 // GET Profile route IF withAuth middleware returns true
 router.get('/profile', withAuth, async (req, res) => {
   try {
+
+    console.log("ROUTE: /profile");
+    
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] },

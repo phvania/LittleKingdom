@@ -41,6 +41,9 @@ router.post('/', async (req, res) => {
 // checks to see if user is registered and starts session if so
 router.post('/login', async (req, res) => {
   try {
+
+    console.log("ROUTE: /api/users/login");
+
     const userData = await Users.findOne({ where: { email: req.body.email } });
 
     if (!userData) {

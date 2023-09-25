@@ -37,6 +37,47 @@ router.get('/login', (req, res) => {
 
   res.render('login');
 });
+// POST A booking
+router.get('/booknow', withAuth, async (req, res) => {
+  try {
+
+    // get the logged in user info
+    const userData = await Users.findByPk(req.session.user_id, {
+      attributes: { exclude: ['password'] }
+    });
+    console.log("**** try *******");
+    console.log(userData);
+    // serialize for handlebars
+    const user = userData.get({ plain: true });
+
+    // get the logged in user's kids
+    const userKidsfromDB = await Kids.findAll({
+      where: {
+        user_id: userData.id
+      }
+    });
+    if (userKidsfromDB) {
+      // serialize for handlebars
+      userKidsfromDB.map((kid) => kid.get({ plain: true }));
+    }
+
+    // get all the daycares from DB
+    const daycaresfromDB = await Daycares.findAll({});
+    // serialize for handlebars
+    daycaresfromDB.map((dc) => dc.get({ plain: true }));
+
+    res.render('booknow', {
+      user_fname: userData.user_firstname,
+      user_id: userData.id,
+      kids: userKidsfromDB,
+      daycares: daycaresfromDB,
+      logged_in: true
+    });
+
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 // GET Profile route IF withAuth middleware returns true
 router.get('/profile', withAuth, async (req, res) => {
   try {
@@ -63,7 +104,7 @@ router.get('/profile', withAuth, async (req, res) => {
       });
       return;
     }
-    
+
     const userBookings = userBookingsfromDB.map((b) => b.get({ plain: true }));
 
     console.log(userBookings);

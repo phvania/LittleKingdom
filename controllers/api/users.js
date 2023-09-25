@@ -47,9 +47,6 @@ router.post('/', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
 
-    console.log("ROUTE: /api/users/login");
-    console.log(req.body.email);
-
     const userData = await Users.findOne({ where: { email: req.body.email } });
 
     if (!userData) {
@@ -57,25 +54,24 @@ router.post('/login', async (req, res) => {
         .status(400)
         .json({ message: 'Incorrect email or password, please try again' });
       return;
-    // console.log("could not find any user");
 
     }
 
-    // const validPassword = await userData.checkPassword(req.body.password);
+    const validPassword = await userData.checkPassword(req.body.password);
 
-    // if (!validPassword) {
-    //   res
-    //     .status(400)
-    //     .json({ message: 'Incorrect email or password, please try again' });
-    //   return;
-    // }
+    if (!validPassword) {
+      res
+        .status(400)
+        .json({ message: 'Incorrect email or password, please try again' });
+      return;
+    }
 
-    // req.session.save(() => {
-    //   req.session.user_id = userData.id;
-    //   req.session.logged_in = true;
+    req.session.save(() => {
+      req.session.user_id = userData.id;
+      req.session.logged_in = true;
       
-    //   res.json({ user: userData, message: 'You are now logged in!' });
-    // });
+      res.json({ user: userData, message: 'You are now logged in!' });
+    });
 
   } catch (err) {
     res.status(400).json(err);

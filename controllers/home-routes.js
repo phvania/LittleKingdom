@@ -30,13 +30,10 @@ router.get('/aboutUs', async (req, res) => {
 // GET User info
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
-
   if (req.session.logged_in) {
-    console.log("GO TO PROFILE *****************");
     res.redirect('/profile');
     return;
   }
-  console.log("ROUTE: /login");
 
   res.render('login');
 });
@@ -44,13 +41,12 @@ router.get('/login', (req, res) => {
 router.get('/profile', withAuth, async (req, res) => {
   try {
 
-    console.log("ROUTE: /profile");
-    
     // Find the logged in user based on the session ID
     const userData = await Users.findByPk(req.session.user_id, {
       attributes: { exclude: ['password'] }
     });
 
+    // const userBookings = 
     const user = userData.get({ plain: true });
 
     res.render('profile', {

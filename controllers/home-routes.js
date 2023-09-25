@@ -14,9 +14,9 @@ router.get('/', async (req, res) => {
     const daycares = daycaresData.map((dc) => dc.get({ plain: true }));
 
     // Pass serialized data and session flag into template
-    res.render('homepage', { 
-      daycares, 
-      logged_in: req.session.logged_in 
+    res.render('homepage', {
+      daycares,
+      logged_in: req.session.logged_in
     });
   } catch (err) {
     res.status(500).json(err);
@@ -46,11 +46,33 @@ router.get('/profile', withAuth, async (req, res) => {
       attributes: { exclude: ['password'] }
     });
 
-    // const userBookings = 
+    const userBookingsfromDB = await Bookings.findAll({
+      where: {
+        user_id: userData.id
+      }
+    });
+
     const user = userData.get({ plain: true });
 
+    if (!userBookingsfromDB) {
+      console.log("here now");
+      res.render('profile', {
+        user_fname: user.user_firstname,
+        bookings_exist: false,
+        logged_in: true
+      });
+      return;
+    }
+    
+    const userBookings = userBookingsfromDB.map((b) => b.get({ plain: true }));
+
+    console.log(userBookings);
+    console.log("about to render...profile...");
     res.render('profile', {
-      ...user,
+      user_fname: user.user_firstname,
+      // ...booking,
+      bookings_exist: true,
+      userBookings,
       logged_in: true
     });
   } catch (err) {

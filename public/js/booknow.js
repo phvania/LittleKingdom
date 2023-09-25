@@ -1,6 +1,7 @@
 const newFormHandler = async (event) => {
     event.preventDefault();
 
+    console.log("IN BOOK NOW CLIENT SIDE PUBLIC ******")
     const bookDaycare = document.querySelector('#daycare-name').value.trim();
     const bookDate = document.querySelector('#book-date').value.trim();
     const bookTime = document.querySelector('#book-time').value.trim();

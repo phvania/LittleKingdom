@@ -9,4 +9,5 @@ router.use('/daycares', daycares);
 router.use('/kids', kids);
 router.use('/bookings', bookings);
 
+// export module
 module.exports = router;

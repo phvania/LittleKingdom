@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const users = require('../../Users');
-const daycares = require('../../Daycares');
+const users = require('../../models/Users');
+const daycares = require('../../models/Daycares');
 const kids = require('../../models/Kiddies');
 const bookings = require('../../models/Bookings');
 

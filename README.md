@@ -17,7 +17,7 @@ We provide parents with freedom!  Browse through daycares in your area and book 
 
 # LINKS
 - Click [here](https://github.com/phvania/LittleKingdom.git) for source code files on GitHub
-- Click [here](https://littlekingdom-6e80ddfd93c8.herokuapp.com/) for LIVE application deployment
+- Click [here](https://fast-island-89305-9c728bd1817b.herokuapp.com/profile) for LIVE application deployment
 - Click [here](https://github.com/users/phvania/projects/7/views/1) for the Projects page on GitHub
 
 # INSTALLATION

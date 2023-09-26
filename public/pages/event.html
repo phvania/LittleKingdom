@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <title></title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+  body {
+    font: 20px Montserrat, sans-serif;
+    line-height: 1.8;
+    color: #f5f6f7;
+  }
+  p {font-size: 16px;}
+  .margin {margin-bottom: 45px;}
+  .bg-1 { 
+    background-color: blueviolet; 
+    color: #ffffff;
+  }
+  .bg-2 { 
+    background-color: #474e5d; 
+    color: #ffffff;
+  }
+  .bg-3 { 
+    background-color: #ffffff;
+    color: #555555;
+  }
+  .bg-4 { 
+    background-color: #2f2f2f; 
+    color: #fff;
+  }
+  .container-fluid {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+  .navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+  }
+  .navbar-nav  li a:hover {
+    color: #1abc9c !important;
+  }
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#">Register Form</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Schedule a Visit</a></li>
+        <li><a href="#">blog</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- main page here -->
+<div class="container-fluid bg-1 text-center">
+  <h1 class="margin"> Little Kingdom</h1>
+  <img src="data:image/png;base64,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" class="img-responsive" style="display:inline" alt="kids" width="350" height="350">
+  <h3>Days to Enjoy</h3>
+</div>
+
+<!-- Special Evants go here -->
+<div class="container-fluid bg-2 text-center">
+  <h1 class="margin">Special Evants</h1>
+  <p>Waiting for you. Come and Join Us </p>
+  <img src="https://sp-ao.shortpixel.ai/client/to_webp,q_lossy,ret_img,w_2560,h_1920/https://happydreamers.ca/wp-content/uploads/2021/09/winter-scaled.jpg"  class=" img-responsive" style="display: inline;" alt="kids" width="400px" height="300px">  
+</div>
+
+<!--  Event examples are here -->
+<div class="container-fluid bg-3 text-center">    
+  <h3 class="margin"></h3><br>
+  <div class="row">
+    <div class="col-sm-4">
+        <h2>Thanksgiving Dinner</h2>
+      <p>The children enjoy a Thanksgiving feast with all the trimmings including roast turkey, homemade gravy, garlic potatoes, roasted vegetables and, of course, pumpkin pie!</p>
+      <img src="../images/turkey-315079_1280.jpg" class="img-responsive margin" style="width:100%" alt="kids">
+    </div>
+    <div class="col-sm-4">
+        <h2>Halloween party</h2> 
+      <p>Our Halloween celebration is all about costume party. The entire center is set up with “Trick & Treat” stations and music and dance. the children can enjoy a Magic show for a Happy Halloween!</p>
+      <img src="../images/little-kids-halloween-party.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+    </div>
+    <div class="col-sm-4">
+        <h2>Christmas Party</h2> 
+      <p>The Little kingdom is ready out for this special event! Giant stars, decoration, seasonal music, and the smell of  goodies and  a visit from Mr. “C” and each child receives a special gift.</p>
+      <img src="../images/it-was-worth-be-good-child.jpg" class="img-responsive margin" style="width:100%" alt="Image">
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="container-fluid bg-4 text-center">
+  <p> <a href="https://www.littlekingdom.com">www.littlekingdom.com</a></p> 
+</footer>
+
+</body>
+</html>

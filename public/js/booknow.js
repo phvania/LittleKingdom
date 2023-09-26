@@ -1,52 +1,53 @@
 const newFormHandler = async (event) => {
     event.preventDefault();
-
-    const bookDaycare = document.querySelector('#daycare-name').value.trim();
     const bookDate = document.querySelector('#book-date').value.trim();
     const bookTime = document.querySelector('#book-time').value.trim();
-    // const bookType = document.querySelector('#book-type').value.trim();
-    const bookKidAge = document.querySelector('#kid-age').value.trim();
-    const bookKidFname = document.querySelector('#kid-firstname').value.trim();
-    const bookKidLname = document.querySelector('#kid-lastname').value.trim();
+    const userId = document.getElementById('userId').value.trim();
 
-    // GET all Daycares and get ID
-    if (bookDaycare) {
-        const response = await fetch(`/api/daycares`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        });
+    let checkedOptions = {
+        daycare_id: '',
+        user_id: userId,
+        kid_id: '',
+        bookings_time: bookTime,
+        bookings_date: bookDate,
+        bookings_type: "PT"
+    };
 
-        if (!  response.ok) {
-            alert('Failed to get a daycare named: ',bookDaycare);
-            return;
+    for (let i = 0; i < event.target.children[0].children[1].children.length; i++) {
+        if (event.target.children[0].children[1].children[i].checked) {
+
+            checkedOptions.daycare_id = event.target.children[0].children[1].children[i].value;
         }
-
-        
     }
-    // GET all Kids
+    // console.log(checkedOptions);
+    console.log(event.target.children[1].children[1].children.length);
+    for (let i = 0; i < event.target.children[1].children[1].children.length; i++) {
+        if (event.target.children[1].children[1].children[i].checked) {
 
-    // Validate that the kid belongs to user
-    // If not -> ask to add -> add -> continue -> else profile page
+            checkedOptions.kid_id = event.target.children[1].children[1].children[i].value;
+        }
+    }
+    console.log(checkedOptions);
 
-    // POST booking req.body = booking parameters
-
-    if (bookDaycare && bookKidFname && bookKidLname) {
-        const response = await fetch(`/api/projects`, {
+    if (bookDate && bookTime && userId && checkedOptions.kid_id && checkedOptions.daycare_id) {
+        const response = await fetch(`/api/bookings`, {
             method: 'POST',
-            body: JSON.stringify({ daycareToBook, needed_funding, description }),
             headers: {
                 'Content-Type': 'application/json',
             },
+            body: JSON.stringify(checkedOptions),
         });
 
         if (response.ok) {
             document.location.replace('/profile');
         } else {
-            alert('Failed to create project');
+            alert(response.statusText);
         }
+    } else {
+        alert("All fields are mandatory!");
+        return;
     }
+
 };
 
 const delButtonHandler = async (event) => {
@@ -68,7 +69,3 @@ const delButtonHandler = async (event) => {
 document
     .querySelector('.new-booking-form')
     .addEventListener('submit', newFormHandler);
-
-document
-    .querySelector('.bookings-list')
-    .addEventListener('click', delButtonHandler);

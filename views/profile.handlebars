@@ -1,5 +1,34 @@
 <div class="row">
   <div class="col-auto">
-    <h2>Welcome, {{user_firstname}}!</h2>
+    <h2>Welcome, {{user_fname}}!</h2>
+    <button class="no-button" id="createBooking">New Booking</button>
+    <!-- Loop over each object in the daycares array -->
+    {{#if bookings_exist}}
+
+    {{#each userBookings as |booking| }}
+    <div class="row mb-4 project">
+      <div class="col-md-5">
+        <h2>
+          <a href="/api/bookings/{{bookings_id}}">{{bookings_date}}</a>
+        </h2>
+        <p>
+          |
+          <button class="no-button" id="modifyBooking">Change Booking</button>
+          |
+          <button class="no-button" id="deleteBooking">Delete Booking</button>
+        </p>
+      </div>
+    </div>
+    {{/each}}
+    {{else}}
+    <div class="row mb-4 project">
+      <div class="col-md-5">
+        <p>
+          You do not have any bookings!  Book now by clicking the 'Book' button below!
+        </p>
+      </div>
+    </div>
+    {{/if}}
   </div>
 </div>
+  <script src="/js/profile.js"></script>

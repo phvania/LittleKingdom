@@ -1,58 +1,53 @@
 <div class="row">
   <div class="col-auto">
-    <h2>Welcome, {{name}}!</h2>
+    <h2>Welcome, {{user_fname}}!</h2>
   </div>
 </div>
 
 <div class="row mt-4">
   <div class="col-md-6">
     <h3>Create a New Booking:</h3>
-
     <form class="form new-booking-form">
-      <div class="form-group">
-        <label for="daycare-name">Daycare name:</label>
-        <input class="form-input" type="text" id="daycare-name" name="daycare-name" />
-      </div>
-      <div class="form-group">
-        <label for="kid-firstname">Child's first name:</label>
-        <input class="form-input" type="text" id="kid-firstname" name="kid-firstname" />
-      </div>
-      <div class="form-group">
-        <label for="kid-secondname">Child's last name:</label>
-        <input class="form-input" type="text" id="kid-secondname" name="kid-secondname" />
-      </div>
-      <div class="form-group">
-        <label for="kid-age">Child's Age:</label>
-        <input class="form-input" type="number" id="kid-age" name="kid-age" />
-      </div>
+      <fieldset>
+        <legend>Please select your preferred daycare:</legend>
+        <div>
+          {{#each daycares as |daycare| }}
+          <input type="radio" id="daycare-{{daycare.id}}" name="daycareName" value="{{daycare.id}}" />
+          <label for="daycare-{{daycare.id}}">{{daycare.daycare_name}}</label>
+          {{/each}}
+        </div>
+        {{!-- <div>
+          <button type="submit">Submit</button>
+        </div> --}}
+      </fieldset>
+                {{#if userHasKids}}
+     <fieldset>
+        <legend>Please select the child you wish to book for:</legend>
+        <div>
+           {{#each kids as |kid| }}
+          <input type="radio" id="kid-{{kid.id}}" name="kidName" value="{{kid.id}}" />
+          <label for="kid-{{kid.id}}">{{kid.kid_firstname}}</label>
+          {{/each}}
+        </div>
+        {{!-- <div>
+          <button type="submit">Submit</button>
+        </div> --}}
+      </fieldset>
+      {{else}}
+      <p>You do not have any children in the system yet, please set them up to complete booking!</p>
+          {{/if}}
       <div class="form-group">
         <label for="book-date">Booking Date:</label>
-        <input class="form-input" type="date" id="book-date" name="book-date" min="2023-09-26" max="2023-12-30"/>
+        <input class="form-input" type="date" id="book-date" name="book-date" min="2023-09-26" max="2023-12-30" />
         <div class="form-group">
-        <label for="book-time">Booking Time:</label>
-        <input class="form-input" type="time" id="book-time" name="kid-age" min="09:00" max="12:00"/>
-      <div class="form-group">
-        <button type="submit" class="btn btn-primary">Create</button>
-      </div>
+          <label for="book-time">Booking Time:</label>
+          <input class="form-input" type="time" id="book-time" name="kid-age" min="09:00" max="12:00" />
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary">Create Booking</button>
+          </div>
+          <input type="hidden" id="userId" name="userId" value={{user_id}} />
     </form>
   </div>
 
-  {{#if bookings.length}}
-  <div class="col-md-6 bookings-list">
-    <h3>Current Bookings:</h3>
 
-    {{#each bookings as |booking|}}
-    <div class="row mb-2">
-      <div class="col-md-8">
-        <h4><a href="/bookings/{{booking.id}}">{{booking.booking_date}} {{booking.booking_time}} {{booking.daycare_id}}</a></h4>
-      </div>
-      <div class="col-md-4">
-        <button class="btn btn-sm btn-danger" data-id="{{booking.id}}">DELETE</button>
-      </div>
-    </div>
-    {{/each}}
-  </div>
-  {{/if}}
-</div>
-
-<script src="./js/booknow.js"></script>
+{{!-- <script src="./js/booknow.js"></script> --}}

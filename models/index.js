@@ -1,5 +1,5 @@
 const Users = require('./Users');
-const Kids = require('./Kids');
+const Kids = require('./Kiddies');
 const Daycares = require('./Daycares');
 const Bookings = require('./Bookings');
 

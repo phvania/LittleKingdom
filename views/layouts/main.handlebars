@@ -2,65 +2,91 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Little Kingdom!</title>
-  <link rel="stylesheet" href="/css/jass.css">
-  <link rel="stylesheet" href="/css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Little Kingdom!</title>
+    <!-- Add the Tailwind CSS stylesheet -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <!-- Include Bootstrap CSS (for modal styles) -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/public/css/style.css">
+
+
 </head>
 
 <body>
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        <a href="/">Little Kingdom</a>
-      </h1>
-       <nav>
+    <div class="flex-column justify-space-around">
+        <header class="display-flex justify-space-between align-center p-2">
+            <div class="m-2 inline place-items-center">
+                <img src="/images/logo.png" alt="logoimage" class="w-40 h-40 inline-block">
+                <h1 class=" inline-block text-6xl">
+                    <a href="/">Little Kingdom</a>
+                </h1>
+            </div>
+
+            <div>
                 <!-- Conditionally render login or logout links -->
                 {{#if logged_in}}
-                
-                <button class="no-button" id="logout">logout</button>
-                <a href="/profile">profile</a>
+                <div class=" space-y-4">
+                    <button class="no-button m-4 p-4 bg-gray-800 text-3xl text-center " id="logout">Logout</button>
+                    <a href="/profile" class=" m-4 p-4 bg-gray-800 text-3xl text-center">Profile</a>
+                    <img src="/images/main image.jpg" alt="headerimage" class="headerimage h-auto w-200 mx-auto ">
+                </div>
 
-                {{!-- <img src="/images/main image.jpg" alt="headerimage"> --}}
+                <nav class="navbar">
+                    <div class="topnav text-center space-x-7 text-5xl bg-gray-300 p-5 m-4">
 
-                <nav>
-                    <div class="topnav">
                         <a href="/aboutUs">About Us</a>
                         <a href="/event">Events</a>
+                        <a href="/booknow">Book now</a>
+                        <a href="../contactUs.handlebars">Contact Us</a>
+
                     </div>
                 </nav>
 
                 {{else}}
-                <a href="/login">login</a>
-                {{!-- <img src="/images/main image.jpg" alt="headerimage"> --}}
+                
+                <div class=" space-y-4">
+                    <div class="grid row-gap-2">
+                        <a href="/login" class=" m-4 p-4 bg-gray-800 text-3xl text-center">Login</a>
 
-                <nav>
-                    <div class="topnav">
-                        <a href="/aboutUs">About Us</a>
-                        <a href="/event">Events</a>
+                        <img src="/images/main image.jpg" alt="headerimage" class="headerimage h-auto w-200 mx-auto ">
+
                     </div>
-                </nav>
+
+                    <div>
+                        <div class="topnav text-center space-x-12 text-5xl bg-gray-300 p-5 m-4">
+                            <a href="/aboutUs">About Us</a>
+                            <a href="/event">Events</a>
+                            <a href="../contact.handlebars">Contact Us</a>
+
+                        </div>
+                        </nav>
+                    </div>
+                </div>
 
                 {{/if}}
 
-            </nav>
-    </header>
-    <main class="container container-fluid mt-5">
-      <!-- Render the sub layout -->
-      {{{ body }}}
-    </main>
-    <Footer>
-<footer class="container-fluid bg-4 text-center">
- <p> Thank you for visiting LittleKingdom</p>
-</footer>
+            </div>
+        </header>
 
-  </div>
+        <div class=" space-y-8">
+        <main class="container container-fluid mt-5">
+            <!-- Render the sub layout -->
+            {{{ body }}}
+        </main>
 
-  <!-- Render script for logged in users only -->
-  {{#if logged_in}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
+        <footer class="container-fluid">
+            <p class="bg-gray-300 p-10 bg-4 text-center text-3xl "> Thank you for visiting LittleKingdom</p>
+        </footer>
+        </div>
+
+    </div>
+
+    <!-- Render script for logged in users only -->
+    {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
 </body>
 
 </html>

@@ -48,8 +48,6 @@ router.get('/booknow', withAuth, async (req, res) => {
     });
     // serialize for handlebars
     const user = userData.get({ plain: true });
-    console.log(user);
-
     // get the logged in user's kids
     const userKidsfromDB = await Kids.findAll({
       where: {
@@ -62,38 +60,19 @@ router.get('/booknow', withAuth, async (req, res) => {
       userKids = userKidsfromDB.map((kid) => kid.get({ plain: true }));
       userHasKids = true;
     }
-    
-
-    console.log(userKids);
-
     // get all the daycares from DB
     const daycaresfromDB = await Daycares.findAll();
     // serialize for handlebars
     const daycares = daycaresfromDB.map((dc) => dc.get({ plain: true }));
 
-    console.log(daycares);
-
-    const bookNowData = {
+    res.render('booknow', {
       user_fname: user.user_firstname,
       user_id: user.id,
       kids: userKids,
       daycares: daycares,
       userHasKids: userHasKids,
       logged_in: true,
-    }
-
-    console.log(bookNowData);
-
-        res.render('booknow', bookNowData);
-
-    // res.render('booknow', {
-    //   user_fname: user.user_firstname,
-    //   user_id: user.id,
-    //   kids: userKids,
-    //   daycares: daycares,
-    //   userHasKids: userHasKids,
-    //   logged_in: true,
-    // });
+    });
 
   } catch (err) {
     console.log(err);

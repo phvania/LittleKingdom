@@ -1,8 +1,8 @@
 const router = require('express').Router();
-const users = require('../../models/Users');
-const daycares = require('../../models/Daycares');
-const kids = require('../../models/Kiddies');
-const bookings = require('../../models/Bookings');
+const users = require('./users');
+const daycares = require('./daycares');
+const kids = require('./kids');
+const bookings = require('./bookings');
 
 router.use('/users', users);
 router.use('/daycares', daycares);

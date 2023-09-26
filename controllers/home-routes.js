@@ -27,6 +27,11 @@ router.get('/aboutUs', async (req, res) => {
   // render about us page
   res.sendFile(path.join(__dirname, '../public/pages/aboutUs.html'));
 });
+// GET Event page 
+router.get('/event', async (req, res) => {
+  // render about us page
+  res.sendFile(path.join(__dirname, '../public/pages/event.html'));
+});
 // GET User info
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
@@ -97,7 +102,6 @@ router.get('/profile', withAuth, async (req, res) => {
     const user = userData.get({ plain: true });
 
     if (!userBookingsfromDB) {
-      console.log("here now");
       res.render('profile', {
         user_fname: user.user_firstname,
         bookings_exist: false,
@@ -108,8 +112,6 @@ router.get('/profile', withAuth, async (req, res) => {
 
     const userBookings = userBookingsfromDB.map((b) => b.get({ plain: true }));
 
-    console.log(userBookings);
-    console.log("about to render...profile...");
     res.render('profile', {
       user_fname: user.user_firstname,
       // ...booking,

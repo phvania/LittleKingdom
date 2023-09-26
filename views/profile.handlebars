@@ -8,15 +8,15 @@
     {{#each userBookings as |booking| }}
     <div class="row mb-4 project">
       <div class="col-md-5">
-        <h2>
-          <a href="/api/bookings/{{bookings_id}}">{{bookings_date}}</a>
-        </h2>
-        <p>
+        <h3>
+          <p>{{bookings_date}}</p>
+        </h3>
+        {{!-- <p>
           |
           <button class="no-button" id="modifyBooking">Change Booking</button>
           |
           <button class="no-button" id="deleteBooking">Delete Booking</button>
-        </p>
+        </p> --}}
       </div>
     </div>
     {{/each}}

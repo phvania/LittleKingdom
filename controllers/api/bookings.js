@@ -35,11 +35,12 @@ router.post('/', async (req, res) => {
     "daycare_id": 3,
   }
   */
+
+  console.log(req.body);
   try {
     const newBooking = await Bookings.create({
       ...req.body
       // ...req.body,
-      // user_id: req.session.user_id,
     });
 
     res.status(200).json(newBooking);

@@ -5,18 +5,19 @@
     <!-- Loop over each object in the daycares array -->
     {{#if bookings_exist}}
 
+    <h2>Current Bookings:</h2>
     {{#each userBookings as |booking| }}
     <div class="row mb-4 project">
       <div class="col-md-5">
-        <h2>
-          <a href="/api/bookings/{{bookings_id}}">{{bookings_date}}</a>
-        </h2>
-        <p>
+        <h3>
+          <p>{{bookings_date}}</p>
+        </h3>
+        {{!-- <p>
           |
           <button class="no-button" id="modifyBooking">Change Booking</button>
           |
           <button class="no-button" id="deleteBooking">Delete Booking</button>
-        </p>
+        </p> --}}
       </div>
     </div>
     {{/each}}
@@ -24,11 +25,11 @@
     <div class="row mb-4 project">
       <div class="col-md-5">
         <p>
-          You do not have any bookings!  Book now by clicking the 'Book' button below!
+          You do not have any bookings! Book now by clicking the 'Book' button below!
         </p>
       </div>
     </div>
     {{/if}}
   </div>
 </div>
-  <script src="/js/profile.js"></script>
+<script src="/js/profile.js"></script>

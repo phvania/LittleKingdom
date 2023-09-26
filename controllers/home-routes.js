@@ -27,6 +27,11 @@ router.get('/aboutUs', async (req, res) => {
   // render about us page
   res.sendFile(path.join(__dirname, '../public/pages/aboutUs.html'));
 });
+// GET Event page 
+router.get('/event', async (req, res) => {
+  // render about us page
+  res.sendFile(path.join(__dirname, '../public/pages/event.html'));
+});
 // GET User info
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
@@ -48,8 +53,6 @@ router.get('/booknow', withAuth, async (req, res) => {
     });
     // serialize for handlebars
     const user = userData.get({ plain: true });
-    console.log(user);
-
     // get the logged in user's kids
     const userKidsfromDB = await Kids.findAll({
       where: {
@@ -62,38 +65,19 @@ router.get('/booknow', withAuth, async (req, res) => {
       userKids = userKidsfromDB.map((kid) => kid.get({ plain: true }));
       userHasKids = true;
     }
-    
-
-    console.log(userKids);
-
     // get all the daycares from DB
     const daycaresfromDB = await Daycares.findAll();
     // serialize for handlebars
     const daycares = daycaresfromDB.map((dc) => dc.get({ plain: true }));
 
-    console.log(daycares);
-
-    const bookNowData = {
+    res.render('booknow', {
       user_fname: user.user_firstname,
       user_id: user.id,
       kids: userKids,
       daycares: daycares,
       userHasKids: userHasKids,
       logged_in: true,
-    }
-
-    console.log(bookNowData);
-
-        res.render('booknow', bookNowData);
-
-    // res.render('booknow', {
-    //   user_fname: user.user_firstname,
-    //   user_id: user.id,
-    //   kids: userKids,
-    //   daycares: daycares,
-    //   userHasKids: userHasKids,
-    //   logged_in: true,
-    // });
+    });
 
   } catch (err) {
     console.log(err);
@@ -118,7 +102,6 @@ router.get('/profile', withAuth, async (req, res) => {
     const user = userData.get({ plain: true });
 
     if (!userBookingsfromDB) {
-      console.log("here now");
       res.render('profile', {
         user_fname: user.user_firstname,
         bookings_exist: false,
@@ -129,8 +112,6 @@ router.get('/profile', withAuth, async (req, res) => {
 
     const userBookings = userBookingsfromDB.map((b) => b.get({ plain: true }));
 
-    console.log(userBookings);
-    console.log("about to render...profile...");
     res.render('profile', {
       user_fname: user.user_firstname,
       // ...booking,

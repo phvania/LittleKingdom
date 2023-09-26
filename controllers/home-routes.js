@@ -27,6 +27,10 @@ router.get('/aboutUs', async (req, res) => {
   // render about us page
   res.sendFile(path.join(__dirname, '../public/pages/aboutUs.html'));
 });
+router.get('/contactUs', async (req, res) => {
+  // render about us page
+  res.sendFile(path.join(__dirname, '../public/pages/contact.html'));
+});
 // GET Event page 
 router.get('/event', async (req, res) => {
   // render about us page
